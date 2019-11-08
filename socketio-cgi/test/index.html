@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>goStream Test</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    </head>
+    <body>
+        <div id = "op_container">
+
+        </div>
+        <script>
+            var outputs = new Array(1024)
+            const root = "/probe/"
+            function connect() {
+                var connection = io('http://localhost:8000/probe/')
+                console.log("Connection", connection)
+                connection.on('connect', () => {
+                    console.log("connected")
+
+                    connection.on('probes', (message) => {
+                        document.getElementById('op_container').innerHTML = document.getElementById('op_container').innerHTML + "<div>"+message+"</div>"
+                    })
+
+                    connection.send("stdout");
+                })
+            }
+            connect()
+        </script>
+    </body>
+</html>
