@@ -19,7 +19,7 @@ To compile the program, provide +x permission to `build.sh`. Now run :
 
 ### How to run a program with socketio-cgi support ?
 Run the program inside socketio-cgi following command : 
-`./build_object program_file [...args]
+`./build_object program_file [...args]`
 
 For example : Run sample test.sh program
 `./build_object sh test.sh`
